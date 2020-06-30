@@ -55,14 +55,25 @@ function nowServing(katzDeliLine) {  //the function nowServing takes the paramet
     ✓ returns a different response programmatically given a different array of names*/
 
 function currentLine(katzDeliLine) {
-  if (katzDeliLine.length > 0) {
-    var whosOnLine = [];
-    for (var i=0; i < katzDeliLine.length; i++) {
-      whosOnLine = whosOnLine + (i +1) + `. ` + katzDeliLine[i] + `, `;
+  if (katzDeliLine.length > 0) {  // IF there are more than 0 elements in the array denoted by katzDeliLine ...
+    var whosOnLine = [];    // THEN run the [for] loop:
+    for (var i=0; i < katzDeliLine.length; i++) {       /*for (var i=0 [the counter of the loop is set to 0]; i < katzDeliLine.length [i needs to be less than the number of elements
+                                                          inside katzDeliLine. Everytime it IS (boolean value of TRUE) the loop will...loop. When i is greater than the number of elements in
+                                                          katzDeliLine, the loop will stop.]; i++ [add 1 to i after every iteratoion]).*/
+      whosOnLine = whosOnLine + (i +1) + `. ` + katzDeliLine[i] + `, `;     /*everytime that i is less than the number of elements inside katzDeliLine (so, everytime that the
+                                                                              loop iterates), the variable whosOnLine (local to this function) is updated: it is now going to give its
+                                                                              PREVIOUS value (which was empty at the beginning of the loop) PLUS 1 (since i was 0 until this point), along with
+                                                                              the indexed element that matches the index number in that iteration (therefore, if i=0 in the first iteration,
+                                                                              katzDeliLine[i] would show the element at index 0. If i is equal to 4 or 5, then katzDeliLine[i] would return whatever
+                                                                              element is at the 4th or 5th index in the array denoted by katzDeliLine).   */
       }
-      whosOnLine = whosOnLine.slice(0, -2);
-      return `The line is currently: ${whosOnLine}`;
-  } else {
-    return `The line is currently empty.`;
+      whosOnLine = whosOnLine.slice(0, -2);           /* when the for loop is done and we have the final iteration of whatever array the variable whosOnLine now is,
+                                                      we assign a new value to whosOnLine: it will now show whatever elements there are between and including index 0
+                                                      and 2.*/
+      return `The line is currently: ${whosOnLine}`;  /* all of this to say that IF there are more than 0 elements in the array denoted by katzDeliLine, THEN (after the loops behind the scene) return
+                                                      the string `The line is currently: ${whosOnLine},` where the function whosOnLine will be played out thanks to ${}, and it will play out
+                                                      the final value it got on line 70.*/
+  } else {                         // IF there were NO elements in the array denoted by katzDeliLine all the way at the beginning...
+    return `The line is currently empty.`; // THEN return the string `The line is currently empty.`
   }
 }
